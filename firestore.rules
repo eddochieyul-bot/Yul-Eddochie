@@ -1,0 +1,173 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        request.auth.token.email in ['aylaafrica.org@gmail.com', 'aylafrica.org@gmail.com', 'admin@aylaafrica.org', 'eddochieyul@gmail.com']
+      );
+    }
+
+    // Admins collection: admins can read/write; users can read their own admin doc
+    match /admins/{adminId} {
+      allow read: if isAuthenticated() && (request.auth.uid == adminId || isAdmin());
+      allow write: if isAdmin();
+    }
+
+    // CMS Collections: Public can read published items; Admins have full access
+    match /leadership/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /programmes/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /events/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /news/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /gallery/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /announcements/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /resources/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /chapters/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // Newsletter Subscribers: Public can create or re-activate subscription; only admins can list/delete
+    match /newsletter_subscribers/{subscriberId} {
+      allow create, update: if request.resource.data.email is string && request.resource.data.email.size() > 5;
+      allow read, delete: if isAdmin();
+    }
+
+    // Newsletter Campaigns & Email Dispatches: Only admins
+    match /newsletter_campaigns/{campaignId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /email_dispatches/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    // Membership Applications: Public can submit; only admins can view and manage
+    match /membership_applications/{appId} {
+      allow create: if request.resource.data.email is string || request.resource.data.fullName is string;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Contact Messages: Public can submit; only admins can view and manage
+    match /contact_messages/{msgId} {
+      allow create: if request.resource.data.email is string;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Activity Logs & Admin Notifications: Public can create (e.g. trigger on subscription); admins can read/write
+    match /activity_logs/{logId} {
+      allow create: if true;
+      allow read, write: if isAdmin();
+    }
+
+    match /admin_notifications/{notifId} {
+      allow create: if true;
+      allow read, write: if isAdmin();
+    }
+
+    // Website Settings: Public read; admin write
+    match /website_settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // AYLA Opportunities Hub
+    match /opportunities/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // Volunteer Applications
+    match /volunteer_applications/{id} {
+      allow create: if request.resource.data.email is string;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // AYLA Leadership Academy
+    match /academy_courses/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // Certificates (Public verification)
+    match /certificates/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // AYLA Stories — Voices of Young Africa
+    match /stories/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // Our Journey / Milestones
+    match /milestones/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // FAQs
+    match /faqs/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // Community Channels
+    match /community_channels/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Impact Metrics
+    match /impact_metrics/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Join AYLA Team Applications
+    match /team_applications/{id} {
+      allow create: if request.resource.data.email is string;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Watch AYLA / Videos
+    match /videos/{id} {
+      allow read: if resource == null || resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+  }
+}

@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Drop shadow for the outer medallion -->
+    <filter id="medallionShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#1A1510" flood-opacity="0.35" />
+    </filter>
+
+    <!-- Metallic Gold Gradients -->
+    <linearGradient id="outerRimGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E6C875" />
+      <stop offset="35%" stop-color="#C59B3F" />
+      <stop offset="70%" stop-color="#EED58D" />
+      <stop offset="100%" stop-color="#A27827" />
+    </linearGradient>
+
+    <linearGradient id="innerRimGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DAB252" />
+      <stop offset="50%" stop-color="#BA8B2C" />
+      <stop offset="100%" stop-color="#E0BC62" />
+    </linearGradient>
+
+    <!-- Warm Parchment Cream Backgrounds -->
+    <radialGradient id="parchmentCream" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FBF7EC" />
+      <stop offset="70%" stop-color="#F3E9D2" />
+      <stop offset="100%" stop-color="#E9DCBF" />
+    </radialGradient>
+
+    <!-- Golden Ochre for Africa Map -->
+    <linearGradient id="africaOchre" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D99E43" />
+      <stop offset="50%" stop-color="#C28732" />
+      <stop offset="100%" stop-color="#A56E22" />
+    </linearGradient>
+
+    <!-- Text Arcs -->
+    <!-- Top Arc (starts at ~155 deg, sweeps over top to ~25 deg) -->
+    <path id="arcTopText" d="M 68,250 A 182,182 0 1,1 432,250" fill="none" />
+    <!-- Bottom Arc (sweeps through bottom from left to right) -->
+    <path id="arcBottomText" d="M 68,250 A 182,182 0 0,0 432,250" fill="none" />
+  </defs>
+
+  <!-- Base outer medallion circle with shadow -->
+  <circle cx="250" cy="250" r="236" fill="url(#parchmentCream)" stroke="#2E241A" stroke-width="4" filter="url(#medallionShadow)" />
+
+  <!-- Outer concentric metallic gold ring -->
+  <circle cx="250" cy="250" r="230" fill="none" stroke="url(#outerRimGold)" stroke-width="8" />
+  <circle cx="250" cy="250" r="224" fill="none" stroke="#2E241A" stroke-width="2.5" />
+
+  <!-- Outer parchment band for motto and title -->
+  <circle cx="250" cy="250" r="150" fill="url(#parchmentCream)" stroke="#2E241A" stroke-width="3" />
+  <circle cx="250" cy="250" r="147" fill="none" stroke="url(#innerRimGold)" stroke-width="3" />
+
+  <!-- TOP ARCUATE TEXT: A.Y.L.A ORGANIZATION -->
+  <text font-family="'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, Arial, sans-serif"
+        font-weight="900"
+        font-size="28"
+        letter-spacing="5"
+        fill="#1C2633">
+    <textPath href="#arcTopText" startOffset="50%" text-anchor="middle">
+      A.Y.L.A ORGANIZATION
+    </textPath>
+  </text>
+
+  <!-- BOTTOM ARCUATE TEXT: YOUNG MINDS. BOLD VISION. UNITED AFRICA. -->
+  <text font-family="'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, Arial, sans-serif"
+        font-weight="800"
+        font-size="14.5"
+        letter-spacing="2.2"
+        fill="#1C2633">
+    <textPath href="#arcBottomText" startOffset="50%" text-anchor="middle">
+      YOUNG MINDS. BOLD VISION. UNITED AFRICA.
+    </textPath>
+  </text>
+
+  <!-- Left Eight-Pointed Golden Star -->
+  <g transform="translate(68, 250) scale(0.9)">
+    <!-- 8 points compass star -->
+    <polygon points="0,-18 4,-5 18,0 4,5 0,18 -4,5 -18,0 -4,-5" fill="url(#outerRimGold)" stroke="#2E241A" stroke-width="1.2" />
+    <polygon points="0,-13 3,-3 13,0 3,3 0,13 -3,3 -13,0 -3,-3" fill="#FFF7DE" />
+    <circle cx="0" cy="0" r="2.5" fill="#A27827" />
+  </g>
+
+  <!-- Right Eight-Pointed Golden Star -->
+  <g transform="translate(432, 250) scale(0.9)">
+    <polygon points="0,-18 4,-5 18,0 4,5 0,18 -4,5 -18,0 -4,-5" fill="url(#outerRimGold)" stroke="#2E241A" stroke-width="1.2" />
+    <polygon points="0,-13 3,-3 13,0 3,3 0,13 -3,3 -13,0 -3,-3" fill="#FFF7DE" />
+    <circle cx="0" cy="0" r="2.5" fill="#A27827" />
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- INNER EMBLEM: CONTINENT OF AFRICA SILHOUETTE IN GOLD     -->
+  <!-- ======================================================== -->
+  <g id="african-continent" transform="translate(250, 245) scale(0.38) translate(-270, -320)">
+    <!-- Continent drop shadow -->
+    <path d="M 235,120 C 275,118 315,125 350,145 C 385,165 405,195 410,230 C 415,265 395,295 390,325 C 380,355 385,370 400,395 C 415,420 430,450 420,490 C 405,530 365,570 325,600 C 295,630 275,670 255,700 C 240,720 225,735 210,735 C 200,735 190,710 180,675 C 165,625 155,575 160,535 C 165,495 150,455 125,430 C 100,405 65,395 35,385 C 15,380 -5,355 10,325 C 25,295 50,290 75,285 C 100,280 110,255 105,230 C 100,205 115,175 145,145 C 175,120 205,118 235,120 Z"
+          fill="#3B2A18" opacity="0.25" transform="translate(6, 6)" />
+
+    <!-- African Continent Body -->
+    <path d="M 235,120 C 275,118 315,125 350,145 C 385,165 405,195 410,230 C 415,265 395,295 390,325 C 380,355 385,370 400,395 C 415,420 430,450 420,490 C 405,530 365,570 325,600 C 295,630 275,670 255,700 C 240,720 225,735 210,735 C 200,735 190,710 180,675 C 165,625 155,575 160,535 C 165,495 150,455 125,430 C 100,405 65,395 35,385 C 15,380 -5,355 10,325 C 25,295 50,290 75,285 C 100,280 110,255 105,230 C 100,205 115,175 145,145 C 175,120 205,118 235,120 Z"
+          fill="url(#africaOchre)"
+          stroke="#5C421A"
+          stroke-width="3"
+          stroke-linejoin="round" />
+
+    <!-- Madagascar Island -->
+    <path d="M 445,540 C 455,520 465,540 460,580 C 455,620 435,640 425,635 C 420,630 435,570 445,540 Z"
+          fill="url(#africaOchre)"
+          stroke="#5C421A"
+          stroke-width="2.5" />
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- CENTRAL PROMINENT TYPOGRAPHY: A.Y.L.A (CRIMSON RED)      -->
+  <!-- ======================================================== -->
+  <g transform="translate(250, 272)" text-anchor="middle">
+    <!-- Red text with prominent white outline and drop-shadow -->
+    <!-- Shadow -->
+    <text x="0" y="3"
+          font-family="'Impact', 'Outfit', 'Arial Black', sans-serif"
+          font-weight="900"
+          font-size="62"
+          letter-spacing="6"
+          fill="#3B1212"
+          opacity="0.35">
+      A.Y.L.A
+    </text>
+
+    <!-- White stroke border background so it stands out powerfully from the map -->
+    <text x="0" y="0"
+          font-family="'Impact', 'Outfit', 'Arial Black', sans-serif"
+          font-weight="900"
+          font-size="62"
+          letter-spacing="6"
+          fill="#B91C1C"
+          stroke="#FFFFFF"
+          stroke-width="7"
+          stroke-linejoin="round"
+          paint-order="stroke fill">
+      A.Y.L.A
+    </text>
+
+    <!-- Inner crimson body -->
+    <text x="0" y="0"
+          font-family="'Impact', 'Outfit', 'Arial Black', sans-serif"
+          font-weight="900"
+          font-size="62"
+          letter-spacing="6"
+          fill="#B91C1C">
+      A.Y.L.A
+    </text>
+  </g>
+</svg>

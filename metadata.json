@@ -1,0 +1,6 @@
+{
+  "name": "Africa's Young Leaders Association (AYLA)",
+  "description": "Official institutional portal of Africa's Young Leaders Association — Young Minds. Bold Vision. United Africa.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

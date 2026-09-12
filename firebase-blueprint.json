@@ -1,0 +1,200 @@
+{
+  "entities": {
+    "admins": {
+      "title": "Admins",
+      "description": "AYLA administrators authorized to manage the CMS",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["super_admin", "content_admin", "events_admin", "communications_admin", "membership_admin"] },
+        "createdAt": { "type": "string" },
+        "lastLogin": { "type": "string" }
+      },
+      "required": ["email", "role"]
+    },
+    "leadership": {
+      "title": "Leadership",
+      "description": "AYLA Executive Council & Directorates",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string" },
+        "position": { "type": "string" },
+        "biography": { "type": "string" },
+        "profilePhoto": { "type": "string" },
+        "country": { "type": "string" },
+        "email": { "type": "string" },
+        "socials": { "type": "object" },
+        "displayOrder": { "type": "number" },
+        "published": { "type": "boolean" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["fullName", "position", "published"]
+    },
+    "events": {
+      "title": "Events",
+      "description": "Continental assemblies, summits and webinars",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "image": { "type": "string" },
+        "date": { "type": "string" },
+        "startTime": { "type": "string" },
+        "endTime": { "type": "string" },
+        "location": { "type": "string" },
+        "eventType": { "type": "string", "enum": ["physical", "online", "hybrid"] },
+        "registrationUrl": { "type": "string" },
+        "organizer": { "type": "string" },
+        "contactInfo": { "type": "string" },
+        "featured": { "type": "boolean" },
+        "published": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "date", "published"]
+    },
+    "news": {
+      "title": "News",
+      "description": "Institutional articles and press communiqués",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "category": { "type": "string" },
+        "author": { "type": "string" },
+        "publishDate": { "type": "string" },
+        "excerpt": { "type": "string" },
+        "content": { "type": "string" },
+        "featuredImage": { "type": "string" },
+        "featured": { "type": "boolean" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "published": { "type": "boolean" }
+      },
+      "required": ["title", "category", "published"]
+    },
+    "programmes": {
+      "title": "Programmes",
+      "description": "AYLA key strategic pillars and flagship programmes",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "description": { "type": "string" },
+        "image": { "type": "string" },
+        "objectives": { "type": "array", "items": { "type": "string" } },
+        "programmeDetails": { "type": "string" },
+        "impactMetric": { "type": "string" },
+        "displayOrder": { "type": "number" },
+        "published": { "type": "boolean" }
+      },
+      "required": ["title", "description", "published"]
+    },
+    "gallery": {
+      "title": "Gallery",
+      "description": "High-resolution photos from assemblies and community activities",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "caption": { "type": "string" },
+        "category": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "date": { "type": "string" },
+        "location": { "type": "string" },
+        "displayOrder": { "type": "number" },
+        "published": { "type": "boolean" }
+      },
+      "required": ["title", "imageUrl", "published"]
+    },
+    "announcements": {
+      "title": "Announcements",
+      "description": "Important notifications for members and chapters",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "publishDate": { "type": "string" },
+        "isImportant": { "type": "boolean" },
+        "attachmentUrl": { "type": "string" },
+        "published": { "type": "boolean" }
+      },
+      "required": ["title", "published"]
+    },
+    "resources": {
+      "title": "Resources",
+      "description": "Publications, constitution, policy briefs, and downloads",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "fileUrl": { "type": "string" },
+        "fileSize": { "type": "string" },
+        "fileFormat": { "type": "string" },
+        "publishDate": { "type": "string" },
+        "published": { "type": "boolean" }
+      },
+      "required": ["title", "category", "published"]
+    },
+    "chapters": {
+      "title": "Chapters",
+      "description": "Regional and national AYLA chapters",
+      "type": "object",
+      "properties": {
+        "region": { "type": "string" },
+        "country": { "type": "string" },
+        "chapterName": { "type": "string" },
+        "coordinator": { "type": "string" },
+        "contactInfo": { "type": "string" },
+        "description": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "status": { "type": "string" },
+        "published": { "type": "boolean" }
+      },
+      "required": ["chapterName", "region", "published"]
+    },
+    "newsletter_subscribers": {
+      "title": "Newsletter Subscribers",
+      "description": "Subscribers to Continental Dispatch newsletter",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "unsubscribed"] },
+        "source": { "type": "string" },
+        "subscribedAt": { "type": "string" }
+      },
+      "required": ["email", "status"]
+    },
+    "newsletter_campaigns": {
+      "title": "Newsletter Campaigns",
+      "description": "Broadcast newsletters and event dispatch campaigns",
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string" },
+        "headline": { "type": "string" },
+        "body": { "type": "string" },
+        "featuredImage": { "type": "string" },
+        "ctaButton": { "type": "string" },
+        "ctaUrl": { "type": "string" },
+        "footer": { "type": "string" },
+        "status": { "type": "string", "enum": ["draft", "sent"] },
+        "sentAt": { "type": "string" },
+        "recipientCount": { "type": "number" },
+        "recipients": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["subject", "status"]
+    },
+    "activity_logs": {
+      "title": "Activity Logs",
+      "description": "Audit trail of changes and notifications in AYLA CMS",
+      "type": "object",
+      "properties": {
+        "action": { "type": "string" },
+        "entity": { "type": "string" },
+        "description": { "type": "string" },
+        "adminEmail": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["action", "description", "timestamp"]
+    }
+  }
+}
